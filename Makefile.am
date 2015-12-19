@@ -1,4 +1,4 @@
-SUBDIRS = src tests
+SUBDIRS = glade src tests
 
 ACLOCAL_AMFLAGS = -I m4
 

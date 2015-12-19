@@ -39,6 +39,19 @@ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE",
 AM_GLIB_GNU_GETTEXT
 
 # Checks for libraries.
+PKG_CHECK_EXISTS(gladeui-2.0 >= 3.14.0, [GLADEUI_FOUND=yes], [GLADEUI_FOUND=no])
+
+if test "x$GLADEUI_FOUND" = "xyes"; then
+	GLADE_CATALOG_DIR=`$PKG_CONFIG --variable=catalogdir gladeui-2.0`
+	GLADE_MODULE_DIR=`$PKG_CONFIG --variable=moduledir gladeui-2.0`
+	GLADE_ICONS_DIR=`$PKG_CONFIG --variable=pixmapdir gladeui-2.0`
+	AC_SUBST(GLADE_CATALOG_DIR)
+	AC_SUBST(GLADE_MODULE_DIR)
+	AC_SUBST(GLADE_ICONS_DIR)
+fi
+
+AM_CONDITIONAL(GLADEUI, test $GLADEUI_FOUND = yes)
+
 PKG_CHECK_MODULES(ZAKGTKDECODER, [gtk+-3.0])
 
 AC_SUBST(ZAKGTKDECODER_CFLAGS)
@@ -75,4 +88,17 @@ AC_CONFIG_FILES([
 	src/Makefile
 	tests/Makefile
 ])
+
+if test $GLADEUI_FOUND = yes; then
+AC_CONFIG_FILES([
+	glade/Makefile
+	glade/icons/Makefile
+	glade/icons/hicolor/Makefile
+	glade/icons/hicolor/16x16/Makefile
+	glade/icons/hicolor/16x16/actions/Makefile
+	glade/icons/hicolor/22x22/Makefile
+	glade/icons/hicolor/22x22/actions/Makefile
+])
+fi
+
 AC_OUTPUT

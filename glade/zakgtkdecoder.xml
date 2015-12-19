@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glade-catalog name="zakgtkdecoder" library="zakgtkdecoder" depends="gtk+" domain="zakgtkdecoder" book="zakgtkdecoder">
+
+	<glade-widget-classes>
+		<glade-widget-class name="ZakGtkDecoder" generic-name="zakgtkdecoder" title="Decoder">
+			<properties>
+				<property name="Show clean icon" id="show-btn-clean" />
+				<property name="Show new button" id="show-btn-new" />
+				<property name="Show open button" id="show-btn-open" />
+				<property name="Show browse button" id="show-btn-browse" />
+			</properties>
+		</glade-widget-class>
+	</glade-widget-classes>
+
+	<glade-widget-group name="gtk-control-display" title="Control and Display">
+		<glade-widget-class-ref name="ZakGtkDecoder" />
+	</glade-widget-group>
+
+</glade-catalog>
