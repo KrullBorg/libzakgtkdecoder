@@ -14,11 +14,13 @@ AM_CPPFLAGS = $(ZAKGTKDECODER_CFLAGS) \
 
 lib_LTLIBRARIES = libzakgtkdecoder.la
 
-libzakgtkdecoder_la_SOURCES =
+libzakgtkdecoder_la_SOURCES = \
+                              zakgtkdecoder.c
 
 libzakgtkdecoder_la_LDFLAGS = -no-undefined
 
 libzakgtkdecoder_include_HEADERS = \
-                             libzakgtkdecoder.h
+                             libzakgtkdecoder.h \
+                             zakgtkdecoder.h
 
 libzakgtkdecoder_includedir = $(includedir)/libzakgtkdecoder

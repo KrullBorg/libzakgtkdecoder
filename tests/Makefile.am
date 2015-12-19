@@ -9,6 +9,7 @@ LIBS = $(ZAKGTKDECODER_LIBS) \
 
 LDADD = $(top_builddir)/src/libzakgtkdecoder.la
 
-noinst_PROGRAMS =
+noinst_PROGRAMS = \
+                  decoder
 
 EXTRA_DIST =

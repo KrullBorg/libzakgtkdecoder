@@ -20,6 +20,7 @@
 #define __LIBZAKGTKDECODER_H__
 
 
+#include <libzakgtkdecoder/zakgtkdecoder.h>
 
 
 #endif /* __LIBZAKGTKDECODER_H__ */

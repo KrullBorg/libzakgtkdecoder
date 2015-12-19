@@ -42,7 +42,7 @@ docs/reference/html/
 docs/reference/xml/
 libtool
 stamp-h1
-tests/test
+tests/decoder
 POTFILES
 mkinstalldirs
 stamp-it
