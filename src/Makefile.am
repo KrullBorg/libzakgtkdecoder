@@ -14,7 +14,14 @@ AM_CPPFLAGS = $(ZAKGTKDECODER_CFLAGS) \
 
 lib_LTLIBRARIES = libzakgtkdecoder.la
 
+decodermarshal.c: decodermarshal.h decoder_marshal.list $(GLIB_GENMARSHAL)
+	$(GLIB_GENMARSHAL) $(srcdir)/decoder_marshal.list --body --prefix=_zak_gtk_decoder_marshal > $(srcdir)/$@
+
+decodermarshal.h: decoder_marshal.list $(GLIB_GENMARSHAL)
+	$(GLIB_GENMARSHAL) $(srcdir)/decoder_marshal.list --header --prefix=_zak_gtk_decoder_marshal > $(srcdir)/$@
+
 libzakgtkdecoder_la_SOURCES = \
+                              decodermarshal.c \
                               zakgtkdecoder.c
 
 libzakgtkdecoder_la_LDFLAGS = -no-undefined
@@ -24,3 +31,6 @@ libzakgtkdecoder_include_HEADERS = \
                              zakgtkdecoder.h
 
 libzakgtkdecoder_includedir = $(includedir)/libzakgtkdecoder
+
+noinst_HEADERS = \
+                 decodermarshal.h

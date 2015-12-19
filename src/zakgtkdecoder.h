@@ -38,6 +38,8 @@ struct _ZakGtkDecoderClass
 	guint btn_new_clicked_signal_id;
 	guint btn_open_clicked_signal_id;
 	guint btn_browse_clicked_signal_id;
+
+	guint decode_signal_id;
 };
 
 

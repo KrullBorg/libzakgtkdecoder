@@ -29,6 +29,8 @@
 	#include <windows.h>
 #endif
 
+#include "decodermarshal.h"
+
 #include "zakgtkdecoder.h"
 
 enum
@@ -220,6 +222,22 @@ zak_gtk_decoder_class_init (ZakGtkDecoderClass *klass)
 	                                               g_cclosure_marshal_VOID__VOID,
 	                                               G_TYPE_NONE,
 	                                               0);
+
+	/**
+	 * ZakGtkDecoder::decode:
+	 * @zak_gtk_decoder:
+	 *
+	 */
+	klass->decode_signal_id = g_signal_new ("decode",
+											G_TYPE_FROM_CLASS (object_class),
+											G_SIGNAL_RUN_LAST,
+											0,
+											NULL,
+											NULL,
+											_zak_gtk_decoder_marshal_STRING__STRING,
+											G_TYPE_STRING,
+											1,
+											G_TYPE_STRING);
 }
 
 static void
@@ -372,11 +390,28 @@ static void
 zak_gtk_decoder_decode (ZakGtkDecoder *decoder)
 {
 	ZakGtkDecoderPrivate *priv;
+	ZakGtkDecoderClass *klass;
+
+	gchar *ret;
 
 	g_return_if_fail (ZAK_GTK_IS_DECODER (decoder));
 
+	klass = ZAK_GTK_DECODER_GET_CLASS (decoder);
+
 	priv = ZAK_GTK_DECODER_GET_PRIVATE (decoder);
 
+	ret = NULL;
+	g_signal_emit (decoder, klass->decode_signal_id,
+				   0,
+				   gtk_label_get_text (GTK_LABEL (priv->lbl_key)),
+				   &ret);
+
+	if (ret == NULL)
+		{
+			ret = g_strdup ("");
+		}
+
+	gtk_entry_set_text (GTK_ENTRY (priv->txt_decoded), ret);
 }
 
 void

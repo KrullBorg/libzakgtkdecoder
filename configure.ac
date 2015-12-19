@@ -30,6 +30,11 @@ AC_PROG_LIBTOOL
 AC_PROG_RANLIB
 
 dnl ******************************
+dnl glib-genmarshal
+dnl ******************************
+AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)
+
+dnl ******************************
 dnl Translations
 dnl ******************************
 GETTEXT_PACKAGE=libzakgtkdecoder
