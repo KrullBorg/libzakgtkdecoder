@@ -76,7 +76,7 @@ static void zak_gtk_decoder_on_btn_browse_clicked (GtkButton *button,
 static GtkWidgetClass *parent_class = NULL;
 
 
-#define ZAK_GTK_DECODER_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_FORM_DECODER, ZakGtkDecoderPrivate))
+#define ZAK_GTK_DECODER_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), ZAK_GTK_TYPE_DECODER, ZakGtkDecoderPrivate))
 
 typedef struct _ZakGtkDecoderPrivate ZakGtkDecoderPrivate;
 struct _ZakGtkDecoderPrivate
@@ -335,7 +335,7 @@ zak_gtk_decoder_set_key (ZakGtkDecoder *decoder, const gchar *key)
 {
 	ZakGtkDecoderPrivate *priv;
 
-	g_return_if_fail (GTK_IS_FORM_DECODER (decoder));
+	g_return_if_fail (ZAK_GTK_IS_DECODER (decoder));
 
 	priv = ZAK_GTK_DECODER_GET_PRIVATE (decoder);
 
@@ -348,7 +348,7 @@ gchar
 {
 	ZakGtkDecoderPrivate *priv;
 
-	g_return_val_if_fail (GTK_IS_FORM_DECODER (decoder), NULL);
+	g_return_val_if_fail (ZAK_GTK_IS_DECODER (decoder), NULL);
 
 	priv = ZAK_GTK_DECODER_GET_PRIVATE (decoder);
 
@@ -360,7 +360,7 @@ gchar
 {
 	ZakGtkDecoderPrivate *priv;
 
-	g_return_val_if_fail (GTK_IS_FORM_DECODER (decoder), NULL);
+	g_return_val_if_fail (ZAK_GTK_IS_DECODER (decoder), NULL);
 
 	priv = ZAK_GTK_DECODER_GET_PRIVATE (decoder);
 
@@ -373,7 +373,7 @@ zak_gtk_decoder_decode (ZakGtkDecoder *decoder)
 {
 	ZakGtkDecoderPrivate *priv;
 
-	g_return_if_fail (GTK_IS_FORM_DECODER (decoder));
+	g_return_if_fail (ZAK_GTK_IS_DECODER (decoder));
 
 	priv = ZAK_GTK_DECODER_GET_PRIVATE (decoder);
 
@@ -536,7 +536,7 @@ zak_gtk_decoder_size_request (GtkWidget *widget,
 
 	guint border_width;
 
-	g_return_if_fail (GTK_IS_FORM_DECODER (widget));
+	g_return_if_fail (ZAK_GTK_IS_DECODER (widget));
 	g_return_if_fail (requisition != NULL);
 
 	decoder = ZAK_GTK_DECODER (widget);
@@ -569,7 +569,7 @@ zak_gtk_decoder_size_allocate (GtkWidget *widget,
 
 	guint border_width;
 
-	g_return_if_fail (GTK_IS_FORM_DECODER (widget));
+	g_return_if_fail (ZAK_GTK_IS_DECODER (widget));
 	g_return_if_fail (allocation != NULL);
 
 	decoder = ZAK_GTK_DECODER (widget);

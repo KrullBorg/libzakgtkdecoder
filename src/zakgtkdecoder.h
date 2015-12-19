@@ -27,22 +27,8 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_FORM_DECODER           (zak_gtk_decoder_get_type ())
-#define ZAK_GTK_DECODER(obj)           (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FORM_DECODER, ZakGtkDecoder))
-#define ZAK_GTK_DECODER_CLASS(klass)   (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_FORM_DECODER, ZakGtkDecoderClass))
-#define GTK_IS_FORM_DECODER(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FORM_DECODER))
-#define GTK_IS_FORM_DECODER_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_FORM_DECODER))
-#define ZAK_GTK_DECODER_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_FORM_DECODER, ZakGtkDecoderClass))
-
-
-typedef struct _ZakGtkDecoder ZakGtkDecoder;
-typedef struct _ZakGtkDecoderClass ZakGtkDecoderClass;
-
-
-struct _ZakGtkDecoder
-{
-	GtkBin parent;
-};
+#define ZAK_GTK_TYPE_DECODER zak_gtk_decoder_get_type ()
+G_DECLARE_DERIVABLE_TYPE (ZakGtkDecoder, zak_gtk_decoder, ZAK_GTK, DECODER, GtkBin)
 
 struct _ZakGtkDecoderClass
 {
@@ -54,8 +40,6 @@ struct _ZakGtkDecoderClass
 	guint btn_browse_clicked_signal_id;
 };
 
-
-GType zak_gtk_decoder_get_type (void) G_GNUC_CONST;
 
 GtkWidget *zak_gtk_decoder_new (void);
 
