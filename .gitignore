@@ -43,6 +43,7 @@ docs/reference/xml/
 libtool
 stamp-h1
 tests/decoder
+tests/decoder_xml
 POTFILES
 mkinstalldirs
 stamp-it
